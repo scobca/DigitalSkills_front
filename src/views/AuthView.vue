@@ -39,7 +39,6 @@
                 <div class="buttons_container">
                     <VButton class="button" @click="clicked"> Войти </VButton>
                     <p class="btn_text"> Ещё нет аккаунта? <span @click="toReg" class="action_text"> Регистрация </span></p>
-
                 </div>
             </div>
 
@@ -47,6 +46,13 @@
         <div class="profile" v-if="this.$route.name == 'profile'">
             <div class="active_container">
                 <h1 class="header"> Ваш профиль </h1>
+                <div class="credits_container">
+                    <p class="credit"> {{name}} </p>
+                    <p class="credit"> {{email}} </p>
+                </div>
+                <div class="buttons_container">
+                    <VButton class="button" @click="clicked"> Выйти из аккаунта </VButton>
+                </div>
             </div>
 
         </div>
@@ -65,6 +71,8 @@ import VButton from "@/components/UI/VButton.vue";
 })
 export default class AuthView extends Vue {
     model: string | null = null
+    name: string | null = 'Your name'
+    email: string | null = 'Your email'
 
     clicked() {
         console.log('clicked')
@@ -100,6 +108,25 @@ export default class AuthView extends Vue {
     flex-direction: column;
     gap: .5rem;
     margin: 2rem auto 1.5rem;
+}
+
+.credits_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem auto 1rem;
+}
+
+.credit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 17rem;
+    height: 2rem;
+    border: transparent 1px solid;
+    border-radius: .5rem;
+    background-color: var(--container-bg-color);
 }
 
 .btn_text {
