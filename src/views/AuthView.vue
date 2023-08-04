@@ -1,5 +1,9 @@
 <template>
-    <p> AuthView </p>
+    <div class="container">
+        <h1 class="main_header">
+            AuthView
+        </h1>
+    </div>
 </template>
 
 <script lang="ts">
