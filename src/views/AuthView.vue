@@ -19,6 +19,7 @@
                         class="input"
                         v-model="model"
                 />
+                <VButton class="button" @click="clicked"> Зарегистрироваться </VButton>
             </div>
         </div>
         <div class="login" v-if="this.$route.name == 'login'">
@@ -40,13 +41,18 @@
 
 import {Options, Vue} from "vue-class-component";
 import VInput from "@/components/UI/VInput.vue";
+import VButton from "@/components/UI/VButton.vue";
 
 @Options({
     name: 'AuthView',
-    components: {VInput}
+    components: {VButton, VInput}
 })
 export default class AuthView extends Vue {
     model: string | null = null
+
+    clicked() {
+        console.log('clicked')
+    }
 }
 </script>
 
@@ -59,7 +65,6 @@ export default class AuthView extends Vue {
 
 .active_container {
     width: 25rem;
-    min-height: 30rem;
     display: flex;
     flex-direction: column;
 
@@ -80,5 +85,10 @@ export default class AuthView extends Vue {
     width: 20rem;
     height: 2rem;
     margin: .75rem auto;
+}
+
+.button {
+    width: 10rem;
+    margin: .75rem auto 1.5rem;
 }
 </style>
