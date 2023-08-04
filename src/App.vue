@@ -24,4 +24,8 @@ export default class App extends Vue {
     --container-bg-color: hsla(250, 26%, 18%, 0.7);
     --input-bg-color: hsla(250, 26%, 18%, 0.9);
 }
+
+.modal {
+
+}
 </style>

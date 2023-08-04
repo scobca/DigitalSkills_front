@@ -19,12 +19,28 @@
                         class="input"
                         v-model="model"
                 />
-                <VButton class="button" @click="clicked"> Зарегистрироваться </VButton>
+                <div class="buttons_container">
+                    <VButton class="button" @click="clicked"> Зарегистрироваться </VButton>
+                    <p class="btn_text"> Уже есть аккаунт? <span @click="toLogin" class="action_text"> Войти </span></p>
+                </div>
             </div>
         </div>
         <div class="login" v-if="this.$route.name == 'login'">
             <div class="active_container">
-                <h1 class="header"> Вход </h1>
+                <h1 class="header"> Войти </h1>
+                <VInput :placeholder="'Электронная почта'"
+                        class="input"
+                        v-model="model"
+                />
+                <VInput :placeholder="'Пароль'"
+                        class="input"
+                        v-model="model"
+                />
+                <div class="buttons_container">
+                    <VButton class="button" @click="clicked"> Войти </VButton>
+                    <p class="btn_text"> Ещё нет аккаунта? <span @click="toReg" class="action_text"> Регистрация </span></p>
+
+                </div>
             </div>
 
         </div>
@@ -53,11 +69,18 @@ export default class AuthView extends Vue {
     clicked() {
         console.log('clicked')
     }
+    toLogin() {
+        this.$router.push({name: 'login'})
+    }
+    toReg() {
+        this.$router.push({name: 'registration'})
+    }
 }
 </script>
 
 <style scoped>
 .container {
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,23 +95,43 @@ export default class AuthView extends Vue {
     border-radius: 1rem;
 }
 
+.buttons_container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin: 2rem auto 1.5rem;
+}
+
+.btn_text {
+    font-size: 0.8rem;
+    margin: 0.3rem auto;
+}
+
+.action_text {
+    text-decoration: underline;
+}
+
+.action_text:hover {
+    cursor: pointer;
+}
+
 .registration {
     display: flex;
     flex-direction: column;
 }
 
 .header {
-    margin: 1rem;
+    margin: 1.5rem auto 1rem;
 }
 
 .input {
     width: 20rem;
     height: 2rem;
-    margin: .75rem auto;
+    margin: .6rem auto;
 }
 
 .button {
-    width: 10rem;
-    margin: .75rem auto 1.5rem;
+    width: 13rem;
+    margin: 0 auto;
 }
 </style>
