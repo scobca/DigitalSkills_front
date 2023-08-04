@@ -1,16 +1,17 @@
 <template>
-    <VModel>
+    <VModal>
         <router-view/>
-    </VModel>
+    </VModal>
+
 </template>
 
 <script lang="ts">
 import {Options, Vue} from "vue-class-component";
-import VModel from "@/components/UI/VModel.vue";
+import VModal from "@/components/UI/VModal.vue";
 
 @Options({
     name: 'App',
-    components: {VModel}
+    components: {VModal}
 })
 export default class App extends Vue {
 
@@ -19,7 +20,8 @@ export default class App extends Vue {
 
 <style>
 :root {
-    --text-color: hsl(0, 25%, 89%);
+    --text-color: hsl(0, 25%, 86%);
     --container-bg-color: hsla(250, 26%, 18%, 0.7);
+    --input-bg-color: hsla(250, 26%, 18%, 0.9);
 }
 </style>
