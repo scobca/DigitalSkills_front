@@ -5,8 +5,8 @@
     text-align: center;
     color: #2c3e50;
 
-    background-size: 100%;
     background: url("@/assets/img/bg_image.jpg") fixed;
+    background-size: 100%;
     min-height: 100vh;
 }
 
@@ -16,6 +16,41 @@
     border: 0;
 
     color: var(--text-color);
+
+    scrollbar-width: thin;
+    scrollbar-color: hsl(192, 8%, 74%) hsl(0, 0%, 20%);
+}
+
+*::-webkit-scrollbar {
+    width: 7px;
+    max-height: 100vh;
+}
+
+*::-webkit-scrollbar-track {
+    height: 100vh;
+    margin-right: 2rem;
+    background-color: hsl(254, 30%, 17%);
+}
+
+*::-webkit-scrollbar-track:hover {
+    background-color: hsl(254, 30%, 17%);
+}
+
+*::-webkit-scrollbar-track:active {
+    background-color: hsl(254, 30%, 17%);
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: hsl(0, 0%, 71%);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(0, 0%, 71%);
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background-color: hsl(0, 0%, 71%);
 }
 
 nav {

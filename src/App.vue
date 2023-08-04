@@ -7,11 +7,10 @@
 <script lang="ts">
 import {Options, Vue} from "vue-class-component";
 import VModel from "@/components/UI/VModel.vue";
-import AuthView from "@/views/AuthView.vue";
 
 @Options({
     name: 'App',
-    components: {AuthView, VModel}
+    components: {VModel}
 })
 export default class App extends Vue {
 
@@ -20,6 +19,7 @@ export default class App extends Vue {
 
 <style>
 :root {
-    --text-color: #eedddd;
+    --text-color: hsl(0, 33%, 90%);
+    --container-bg-color: hsla(250, 26%, 18%, 0.6);
 }
 </style>
