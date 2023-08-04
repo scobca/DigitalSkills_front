@@ -5,22 +5,22 @@
                 <h1 class="header"> Регистрация </h1>
                 <VInput :placeholder="'ФИО'"
                         class="input"
-                        v-model="model"
+                        v-model="name"
                 />
                 <VInput :placeholder="'Электронная почта'"
                         class="input"
-                        v-model="model"
+                        v-model="email"
                 />
                 <VInput :placeholder="'Пароль'"
                         class="input"
-                        v-model="model"
+                        v-model="password"
                 />
                 <VInput :placeholder="'Повторите пароль'"
                         class="input"
-                        v-model="model"
+                        v-model="doublePassword"
                 />
                 <div class="buttons_container">
-                    <VButton class="button" @click="clicked"> Зарегистрироваться </VButton>
+                    <VButton class="button" @click="newUser"> Зарегистрироваться </VButton>
                     <p class="btn_text"> Уже есть аккаунт? <span @click="toLogin" class="action_text"> Войти </span></p>
                 </div>
             </div>
@@ -30,14 +30,14 @@
                 <h1 class="header"> Войти </h1>
                 <VInput :placeholder="'Электронная почта'"
                         class="input"
-                        v-model="model"
+                        v-model="email"
                 />
                 <VInput :placeholder="'Пароль'"
                         class="input"
-                        v-model="model"
+                        v-model="password"
                 />
                 <div class="buttons_container">
-                    <VButton class="button" @click="clicked"> Войти </VButton>
+                    <VButton class="button" @click="login"> Войти </VButton>
                     <p class="btn_text"> Ещё нет аккаунта? <span @click="toReg" class="action_text"> Регистрация </span></p>
                 </div>
             </div>
@@ -47,8 +47,8 @@
             <div class="active_container">
                 <h1 class="header"> Ваш профиль </h1>
                 <div class="credits_container">
-                    <p class="credit"> {{name}} </p>
-                    <p class="credit"> {{email}} </p>
+                    <p class="credit"> {{this.name}} </p>
+                    <p class="credit"> {{this.email}} </p>
                 </div>
                 <div class="buttons_container">
                     <VButton class="button" @click="clicked"> Выйти из аккаунта </VButton>
@@ -71,8 +71,10 @@ import VButton from "@/components/UI/VButton.vue";
 })
 export default class AuthView extends Vue {
     model: string | null = null
-    name: string | null = 'Your name'
-    email: string | null = 'Your email'
+    name: string | null = null
+    email: string | null = null
+    password: string | null = null
+    doublePassword: string | null = null
 
     clicked() {
         console.log('clicked')
@@ -82,6 +84,26 @@ export default class AuthView extends Vue {
     }
     toReg() {
         this.$router.push({name: 'registration'})
+    }
+    login() {
+        this.name = localStorage.getItem('name')
+        this.email = localStorage.getItem('email')
+        this.$router.push({name: 'profile'})
+    }
+    async newUser() {
+        const credits = {
+            name: this.name,
+            email: this.email,
+            password: this.password,
+        }
+
+        this.$store.commit('addUser', credits)
+        await this.getUserData()
+        this.$router.push({name: 'profile'})
+    }
+    async getUserData() {
+        this.name = localStorage.getItem('name')
+        this.email = localStorage.getItem('email')
     }
 }
 </script>
