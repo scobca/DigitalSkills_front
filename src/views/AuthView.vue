@@ -6,11 +6,15 @@
             </div>
         </div>
         <div class="login" v-if="this.$route.name == 'login'">
-            <h1 class="header"> Вход </h1>
+            <div class="active_container">
+                <h1 class="header"> Вход </h1>
+            </div>
 
         </div>
         <div class="profile" v-if="this.$route.name == 'profile'">
-            <h1 class="header"> Ваш профиль </h1>
+            <div class="active_container">
+                <h1 class="header"> Ваш профиль </h1>
+            </div>
 
         </div>
     </div>
@@ -36,11 +40,20 @@ export default class AuthView extends Vue {
     align-items: center;
     align-content: center;
 
-    height: 100vh;
+    height: 95vh;
 }
 
 .active_container {
-    width: 20rem;
+    width: 25rem;
+    min-height: 30rem;
+
     background: var(--container-bg-color);
+
+    border: transparent 1px solid;
+    border-radius: 1rem;
+}
+
+.header {
+    margin: 1rem;
 }
 </style>

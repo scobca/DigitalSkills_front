@@ -19,7 +19,7 @@ export default class App extends Vue {
 
 <style>
 :root {
-    --text-color: hsl(0, 33%, 90%);
-    --container-bg-color: hsla(250, 26%, 18%, 0.6);
+    --text-color: hsl(0, 25%, 89%);
+    --container-bg-color: hsla(250, 26%, 18%, 0.7);
 }
 </style>
