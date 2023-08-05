@@ -1,5 +1,5 @@
 <template>
-    <div class="v_model_container">
+    <div class="v_modal_container">
         <slot></slot>
     </div>
 </template>
@@ -9,15 +9,15 @@
 import {Options, Vue} from "vue-class-component";
 
 @Options({
-    name: 'VModel'
+    name: 'VModal'
 })
-export default class VModel extends Vue {
+export default class VModal extends Vue {
 
 }
 </script>
 
 <style scoped>
-.v_model_container {
+.v_modal_container {
     padding: 1rem;
 }
 </style>
