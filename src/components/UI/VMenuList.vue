@@ -3,16 +3,35 @@
         <h1 class="header">Меню</h1>
         <div class="buttons_container">
             <router-link to="" class="button">
-                Главная
+               <div class="block">
+                   <img src="@/assets/svg/home_icon.svg" alt="" class="img">
+                   <p> Главная </p>
+               </div>
             </router-link>
             <router-link to="" class="button">
-                Тарифы
+                <div class="block">
+                    <img src="@/assets/svg/traffic_icon.svg" alt="" class="img">
+                    <p> Тарифы </p>
+                </div>
             </router-link>
-            <router-link to="" class="button">
-                Профиль
+<!--            TODO make it possible to display only one button (need checking auth + display 'profile' only if auth)-->
+            <router-link to="" class="button" v-if="show">
+                <div class="block">
+                    <img src="@/assets/svg/profile_icon.svg" alt="" class="img">
+                    <p> Профиль </p>
+                </div>
             </router-link>
-            <router-link to="" class="button">
-                Выйти
+            <router-link to="" class="button" v-if="show">
+                <div class="block">
+                    <img src="@/assets/svg/login_icon.svg" alt="" class="img">
+                    <p> Войти </p>
+                </div>
+            </router-link>
+            <router-link to="" class="button" v-if="show">
+                <div class="block">
+                    <img src="@/assets/svg/logout_icon.svg" alt="" class="img">
+                    <p> Выйти </p>
+                </div>
             </router-link>
         </div>
     </div>
@@ -25,7 +44,8 @@ import {Options, Vue} from "vue-class-component";
     name: 'VMenuList',
 })
 export default class VMenuList extends Vue {
-
+    //TODO: 'show' boolean will be select one of the buttons to display it
+    show = true
 }
 </script>
 
@@ -42,7 +62,6 @@ export default class VMenuList extends Vue {
 .header {
     padding: 1rem 0;
     border-bottom: 1px solid var(--border-menu-color);
-
 }
 
 .buttons_container {
@@ -60,8 +79,18 @@ export default class VMenuList extends Vue {
     box-sizing: border-box;
 
     display: flex;
-    text-indent: 1rem;
+    text-indent: .5rem;
     justify-content: flex-start;
     align-items: center;
+}
+
+.block {
+    display: flex;
+    align-items: center;
+}
+
+.img {
+    height: 1.1rem;
+    margin-left: .5rem;
 }
 </style>
