@@ -37,6 +37,7 @@ export default class App extends Vue {
     --text-color: hsl(0, 25%, 86%);
     --container-bg-color: hsla(250, 26%, 18%, 0.7);
     --input-bg-color: hsla(250, 26%, 18%, 0.9);
+    --border-menu-color: rgba(38, 34, 58, 0.9);
 }
 
 .container {
