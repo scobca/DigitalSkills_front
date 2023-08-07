@@ -84,6 +84,10 @@ export default class VMenuList extends Vue {
     align-items: center;
 }
 
+.button:hover .img {
+    transform: scale(1.2);
+}
+
 .block {
     display: flex;
     align-items: center;
@@ -92,5 +96,7 @@ export default class VMenuList extends Vue {
 .img {
     height: 1.1rem;
     margin-left: .5rem;
+    transform: scale(1);
+    transition: 500ms;
 }
 </style>
