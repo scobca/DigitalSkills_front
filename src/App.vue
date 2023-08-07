@@ -1,6 +1,13 @@
 <template>
-    <div class="container">
+    <div class="container_menu" v-if="show">
         <VMenuList/>
+        <div class="modal">
+            <VModal>
+                <router-view/>
+            </VModal>
+        </div>
+    </div>
+    <div class="container" v-if="!show">
         <div class="modal">
             <VModal>
                 <router-view/>
@@ -13,14 +20,15 @@
 import {Options, Vue} from "vue-class-component";
 import VModal from "@/components/UI/VModal.vue";
 import VMenuList from "@/components/UI/VMenuList.vue";
-import {Prop} from "vue-property-decorator";
 
 @Options({
     name: 'App',
     components: {VMenuList, VModal}
 })
 export default class App extends Vue {
-
+    get show() {
+        return this.$store.getters.showMenu
+    }
 }
 </script>
 
@@ -32,6 +40,12 @@ export default class App extends Vue {
 }
 
 .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100vh;
+}
+
+.container_menu {
     display: grid;
     grid-template-columns: min-content 1fr;
     height: 100vh;

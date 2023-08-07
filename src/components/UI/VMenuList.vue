@@ -2,9 +2,9 @@
     <div class="main">
         <h1>Меню</h1>
         <div class="buttons">
-            <p>shlkfgj</p>
-            <p>slkfgj</p>
-            <p>lksjgf</p>
+            <p>point 1</p>
+            <p>point 2</p>
+            <p>point 3</p>
         </div>
     </div>
 </template>
