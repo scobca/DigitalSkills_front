@@ -2,7 +2,12 @@
     <div class="container">
         <div class="registration" v-if="this.$route.name == 'signUp'">
             <div class="active_container">
-                <h1 class="header"> Регистрация </h1>
+                <div class="row">
+                    <router-link to="/">
+                        <img src="@/assets/svg/arrow_icon.svg" alt="" class="img">
+                    </router-link>
+                    <h1 class="header"> Регистрация </h1>
+                </div>
                 <div class="inputs">
                     <VInput :placeholder="'Фамилия Имя Отчество'"
                             class="input"
@@ -37,7 +42,12 @@
         </div>
         <div class="login" v-if="this.$route.name == 'signIn'">
             <div class="active_container">
-                <h1 class="header"> Войти </h1>
+                <div class="row">
+                    <router-link to="/">
+                        <img src="@/assets/svg/arrow_icon.svg" alt="" class="img">
+                    </router-link>
+                    <h1 class="header"> Войти </h1>
+                </div>
                 <VInput :placeholder="'Электронная почта'"
                         class="input"
                         v-model="email"
@@ -55,7 +65,12 @@
         </div>
         <div class="profile" v-if="this.$route.name == 'account'">
             <div class="active_container">
-                <h1 class="header"> Ваш профиль </h1>
+                <div class="row">
+                    <router-link to="/">
+                        <img src="@/assets/svg/arrow_icon.svg" alt="" class="img">
+                    </router-link>
+                    <h1 class="header"> Ваш профиль </h1>
+                </div>
                 <div class="credits_container">
                     <p class="credit"> {{this.name}} </p>
                     <p class="credit"> {{this.email}} </p>
@@ -131,6 +146,7 @@ export default class AdminAuthView extends Vue {
     width: 25rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     background: var(--container-bg-color);
     border-radius: 1rem;
@@ -150,6 +166,19 @@ export default class AdminAuthView extends Vue {
     margin: 2rem auto 1rem;
 }
 
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17rem;
+}
+
+.img {
+    height: 1.3rem;
+    margin-top: .6rem;
+    cursor: pointer;
+}
+
 .credit {
     display: flex;
     justify-content: center;
@@ -164,11 +193,6 @@ export default class AdminAuthView extends Vue {
 
 .inputs {
     margin-top: 1rem;
-}
-
-.title {
-    font-weight: lighter;
-    font-size: 1.1rem;
 }
 
 .btn_text {

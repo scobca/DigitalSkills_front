@@ -2,7 +2,12 @@
     <div class="container">
         <div class="registration" v-if="this.$route.name == 'registration'">
             <div class="active_container">
-                <h1 class="header"> Регистрация </h1>
+                <div class="row">
+                    <router-link to="/">
+                        <img src="@/assets/svg/arrow_icon.svg" alt="" class="img">
+                    </router-link>
+                    <h1 class="header"> Регистрация </h1>
+                </div>
                 <VInput :placeholder="'ФИО'"
                         class="input"
                         v-model="name"
@@ -27,7 +32,12 @@
         </div>
         <div class="login" v-if="this.$route.name == 'login'">
             <div class="active_container">
-                <h1 class="header"> Войти </h1>
+                <div class="row">
+                    <router-link to="/">
+                        <img src="@/assets/svg/arrow_icon.svg" alt="" class="img">
+                    </router-link>
+                    <h1 class="header"> Войти </h1>
+                </div>
                 <VInput :placeholder="'Электронная почта'"
                         class="input"
                         v-model="email"
@@ -45,7 +55,12 @@
         </div>
         <div class="profile" v-if="this.$route.name == 'profile'">
             <div class="active_container">
-                <h1 class="header"> Ваш профиль </h1>
+                <div class="row">
+                    <router-link to="/">
+                        <img src="@/assets/svg/arrow_icon.svg" alt="" class="img">
+                    </router-link>
+                    <h1 class="header"> Ваш профиль </h1>
+                </div>
                 <div class="credits_container">
                     <p class="credit"> {{this.name}} </p>
                     <p class="credit"> {{this.email}} </p>
@@ -120,6 +135,7 @@ export default class AuthView extends Vue {
     width: 25rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     background: var(--container-bg-color);
     border-radius: 1rem;
@@ -137,6 +153,19 @@ export default class AuthView extends Vue {
     flex-direction: column;
     gap: 1rem;
     margin: 2rem auto 1rem;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17rem;
+}
+
+.img {
+    height: 1.3rem;
+    margin-top: .6rem;
+    cursor: pointer;
 }
 
 .credit {
