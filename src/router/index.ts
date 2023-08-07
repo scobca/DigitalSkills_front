@@ -5,7 +5,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'home',
-        component: () => import('@/views/HomeView.vue'),
+        component: () => import('@/views/common/HomeView.vue'),
         meta: {
             requireAuth: false,
             showMenu: true
