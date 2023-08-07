@@ -64,6 +64,15 @@ const routes: Array<RouteRecordRaw> = [
             showMenu: true
         }
     },
+    {
+        path: '/caro',
+        name: 'caro',
+        component: () => import('@/components/UI/VCarousel.vue'),
+        meta: {
+            requireAuth: false,
+            showMenu: false
+        }
+    },
 ]
 
 const router = createRouter({
