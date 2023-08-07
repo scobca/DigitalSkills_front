@@ -39,7 +39,7 @@ const routes: Array<RouteRecordRaw> = [
         }
     },
     {
-        path: '/admin/signUp',
+        path: '/admin/registration',
         name: 'signUp',
         component: () => import('@/views/admin/AdminAuthView.vue'),
         meta: {
@@ -47,7 +47,7 @@ const routes: Array<RouteRecordRaw> = [
             showMenu: false
         }
     }, {
-        path: '/admin/signIn',
+        path: '/admin/login',
         name: 'signIn',
         component: () => import('@/views/admin/AdminAuthView.vue'),
         meta: {
@@ -56,7 +56,7 @@ const routes: Array<RouteRecordRaw> = [
         }
     },
     {
-        path: '/admin/account',
+        path: '/admin/profile',
         name: 'account',
         component: () => import('@/views/admin/AdminAuthView.vue'),
         meta: {
