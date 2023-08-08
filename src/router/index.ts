@@ -67,7 +67,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/caro',
         name: 'caro',
-        component: () => import('@/components/UI/VCarousel.vue'),
+        component: () => import('@/components/UI/Carousel.vue'),
         meta: {
             requireAuth: false,
             showMenu: false

@@ -11,14 +11,14 @@
             </div>
         </div>
         <div class="carousel_container">
-            <VCarousel/>
+<!--            <VCarousel/>-->
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import {Options, Vue} from "vue-class-component";
-import VCarousel from "@/components/UI/VCarousel.vue";
+import VCarousel from "@/components/UI/Carousel.vue";
 
 @Options({
     name: 'HomeView',
