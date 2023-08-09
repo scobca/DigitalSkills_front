@@ -19,7 +19,7 @@
     </div>
 <!--    TODO create new icon - arrow_down-->
     <div class="arrow_down_container">
-        <img src="../../assets/svg/arrow_icon_left.svg" alt="" class="arrow_down animate__animated animate__flash">
+        <img src="../../assets/svg/arrow_icon_down.svg" alt="" class="arrow_down animate__animated animate__flash animate__delay-2s	">
     </div>
 </template>
 
@@ -89,5 +89,13 @@ export default class HomeView extends Vue {
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
+}
+
+.animate__backInDown {
+    --animate-duration: 1.5s;
+}
+
+.animate__flash{
+    --animate-duration: 3s;
 }
 </style>
