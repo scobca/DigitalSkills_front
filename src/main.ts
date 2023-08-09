@@ -11,6 +11,7 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
 //styles
+import 'animate.css'
 import '@/assets/styles/main.css'
 import '@/assets/styles/colors.css'
 

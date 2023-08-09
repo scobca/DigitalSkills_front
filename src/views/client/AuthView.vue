@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="registration" v-if="this.$route.name == 'registration'">
+        <div class="registration animate__animated animate__fadeInDown" v-if="this.$route.name == 'registration'">
             <div class="active_container">
                 <div class="row">
                     <router-link to="/">
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="login" v-if="this.$route.name == 'login'">
+        <div class="login animate__animated animate__fadeInDown" v-if="this.$route.name == 'login'">
             <div class="active_container">
                 <div class="row">
                     <router-link to="/">
@@ -53,7 +53,7 @@
             </div>
 
         </div>
-        <div class="profile" v-if="this.$route.name == 'profile'">
+        <div class="profile animate__animated animate__fadeInDown" v-if="this.$route.name == 'profile'">
             <div class="active_container">
                 <div class="row">
                     <router-link to="/">

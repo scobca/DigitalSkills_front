@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="greetings_container">
-            <div class="header">
+            <div class="header animate__animated animate__backInDown">
                 <h1 class="header">Ковалёво inc. &mdash; </h1>
                 <h3 class="header">биллинговая компания номер 1 в России</h3>
             </div>
@@ -9,8 +9,6 @@
                 <p class="description_text">
                     Ковалёво Inc. – это инновационная биллинговая компания, специализирующаяся на предоставлении
                     высококачественных решений для автоматизации и оптимизации финансовых процессов различных бизнесов.
-                    С нашим богатым опытом и экспертизой мы помогаем клиентам по всему миру управлять своими финансами
-                    более эффективно.
                 </p>
             </div>
         </div>
