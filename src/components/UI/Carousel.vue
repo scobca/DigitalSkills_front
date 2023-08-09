@@ -2,12 +2,12 @@
     <v-card max-width="max-content">
         <v-carousel class="carousel" height="20rem" :cycle="true" :interval="4500">
             <template v-slot:prev="{ props }">
-                <VButton @click="props.onClick">
-                    <img src="@/assets/svg/arrow_icon_revert.svg" alt="" class="arrow">
+                <VButton @click="props.onClick" class="btn">
+                    <img src="@/assets/svg/arrow_icon.svg" alt="" class="arrow">
                 </VButton>
             </template>
             <template v-slot:next="{ props }">
-                <VButton @click="props.onClick">
+                <VButton @click="props.onClick" class="btn">
                     <img src="@/assets/svg/arrow_icon_revert.svg" alt="" class="arrow">
                 </VButton>
             </template>
@@ -44,7 +44,13 @@ export default class Carousel extends Vue {
 }
 
 .arrow {
-    height: 1rem;
-    margin-top: .5rem;
+    height: .75rem;
 }
+
+.btn {
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
 </style>
