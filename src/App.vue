@@ -23,7 +23,7 @@ import {Options, Vue} from "vue-class-component";
 import VModal from "@/components/UI/VModal.vue";
 import VMenuList from "@/components/UI/VMenuList.vue";
 import VButton from "@/components/UI/VButton.vue";
-import {LoginModel} from "@/api/LoginModel";
+import {LoginModel} from "@/api/models/LoginModel";
 
 @Options({
     name: 'App',
