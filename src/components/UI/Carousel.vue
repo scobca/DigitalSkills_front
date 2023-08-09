@@ -3,12 +3,12 @@
         <v-carousel class="carousel" height="20rem" :cycle="true" :interval="4500">
             <template v-slot:prev="{ props }">
                 <VButton @click="props.onClick" class="btn">
-                    <img src="@/assets/svg/arrow_icon.svg" alt="" class="arrow">
+                    <img src="../../assets/svg/arrow_icon_left.svg" alt="" class="arrow">
                 </VButton>
             </template>
             <template v-slot:next="{ props }">
                 <VButton @click="props.onClick" class="btn">
-                    <img src="@/assets/svg/arrow_icon_revert.svg" alt="" class="arrow">
+                    <img src="../../assets/svg/arrow_icon_rignt.svg" alt="" class="arrow">
                 </VButton>
             </template>
             <v-carousel-item>

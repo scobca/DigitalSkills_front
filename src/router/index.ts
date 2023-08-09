@@ -35,7 +35,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/client/AuthView.vue'),
         meta: {
             requireAuth: true,
-            showMenu: true
+            showMenu: false
         }
     },
     {
@@ -61,7 +61,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/admin/AdminAuthView.vue'),
         meta: {
             requireAuth: true,
-            showMenu: true
+            showMenu: false
         }
     }
 ]

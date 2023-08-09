@@ -19,7 +19,7 @@
     </div>
 <!--    TODO create new icon - arrow_down-->
     <div class="arrow_down_container">
-        <img src="@/assets/svg/arrow_icon.svg" alt="" class="arrow_down animate__animated animate__flash">
+        <img src="../../assets/svg/arrow_icon_left.svg" alt="" class="arrow_down animate__animated animate__flash">
     </div>
 </template>
 

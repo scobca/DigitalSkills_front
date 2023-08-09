@@ -4,7 +4,7 @@
             <div class="active_container">
                 <div class="row">
                     <router-link to="/">
-                        <img src="@/assets/svg/arrow_icon.svg" alt="" class="img">
+                        <img src="../../assets/svg/arrow_icon_left.svg" alt="" class="img">
                     </router-link>
                     <h1 class="header"> Регистрация </h1>
                 </div>
@@ -34,7 +34,7 @@
             <div class="active_container">
                 <div class="row">
                     <router-link to="/">
-                        <img src="@/assets/svg/arrow_icon.svg" alt="" class="img">
+                        <img src="../../assets/svg/arrow_icon_left.svg" alt="" class="img">
                     </router-link>
                     <h1 class="header"> Войти </h1>
                 </div>
@@ -57,7 +57,7 @@
             <div class="active_container">
                 <div class="row">
                     <router-link to="/">
-                        <img src="@/assets/svg/arrow_icon.svg" alt="" class="img">
+                        <img src="../../assets/svg/arrow_icon_left.svg" alt="" class="img">
                     </router-link>
                     <h1 class="header"> Ваш профиль </h1>
                 </div>
