@@ -10,8 +10,11 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-//styles
+//animate.css library
 import 'animate.css'
+
+//styles
+import '@/assets/styles/global_classes.css'
 import '@/assets/styles/main.css'
 import '@/assets/styles/colors.css'
 
