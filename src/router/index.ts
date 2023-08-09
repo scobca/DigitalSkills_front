@@ -63,16 +63,7 @@ const routes: Array<RouteRecordRaw> = [
             requireAuth: true,
             showMenu: true
         }
-    },
-    {
-        path: '/caro',
-        name: 'caro',
-        component: () => import('@/components/UI/Carousel.vue'),
-        meta: {
-            requireAuth: false,
-            showMenu: false
-        }
-    },
+    }
 ]
 
 const router = createRouter({
