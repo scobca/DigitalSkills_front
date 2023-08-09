@@ -9,7 +9,7 @@
             </VModal>
         </div>
     </div>
-    <div class="container" v-if="!show">
+    <div class="container main" v-if="!show">
         <div class="modal">
             <VModal>
                 <router-view/>
@@ -52,6 +52,13 @@ export default class App extends Vue {
     display: grid;
     grid-template-columns: 1fr;
     height: 100%;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
 }
 
 .container_menu {
