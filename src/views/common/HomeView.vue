@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container main">
         <div class="greetings_container">
             <div class="header animate__animated animate__backInDown">
                 <h1 class="header">Ковалёво inc. &mdash; </h1>
@@ -17,6 +17,10 @@
             <Carousel/>
         </div>
     </div>
+<!--    TODO create new icon - arrow_down-->
+    <div class="arrow_down_container">
+        <img src="@/assets/svg/arrow_icon.svg" alt="" class="arrow_down animate__animated animate__flash">
+    </div>
 </template>
 
 <script lang="ts">
@@ -33,9 +37,23 @@ export default class HomeView extends Vue {
 </script>
 
 <style scoped>
+.main {
+    margin-top: 5rem;
+}
+
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr;
+}
+
+.arrow_down_container {
+    display: flex;
+    justify-content: center;
+    margin: 5rem 0 0 -15%;
+}
+
+.arrow_down {
+    height: 2.5rem;
 }
 
 .greetings_container {
