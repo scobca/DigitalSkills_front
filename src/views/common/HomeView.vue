@@ -6,23 +6,28 @@
                 <h3 class="header">биллинговая компания номер 1 в России</h3>
             </div>
             <div class="description">
-                <p class="description_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor doloremque earum error repellendus totam? Consequatur cupiditate deserunt eaque expedita sint?</p>
-                <p class="description_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor doloremque earum error repellendus totam? Consequatur cupiditate deserunt eaque expedita sint?</p>
+                <p class="description_text">
+                    Ковалёво Inc. – это инновационная биллинговая компания, специализирующаяся на предоставлении
+                    высококачественных решений для автоматизации и оптимизации финансовых процессов различных бизнесов.
+                    С нашим богатым опытом и экспертизой мы помогаем клиентам по всему миру управлять своими финансами
+                    более эффективно.
+                </p>
             </div>
         </div>
         <div class="carousel_container">
-<!--            <VCarousel/>-->
+            <h2 class="header carousel_header">Наши достижения</h2>
+            <Carousel/>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import {Options, Vue} from "vue-class-component";
-import VCarousel from "@/components/UI/Carousel.vue";
+import Carousel from "@/components/UI/Carousel.vue";
 
 @Options({
     name: 'HomeView',
-    components: {VCarousel},
+    components: {Carousel},
 })
 export default class HomeView extends Vue {
 
@@ -31,7 +36,6 @@ export default class HomeView extends Vue {
 
 <style scoped>
 .container {
-    border: 1px solid red;
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
@@ -43,13 +47,21 @@ export default class HomeView extends Vue {
     gap: 3rem;
 }
 
-.greetings_container {
-
+.carousel_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .header {
     width: 20rem;
     text-align: left;
+}
+
+.carousel_header {
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 .description {
