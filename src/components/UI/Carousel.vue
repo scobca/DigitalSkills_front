@@ -39,5 +39,12 @@ export default class Carousel extends Vue {
 </script>
 
 <style scoped>
+.img {
+    height: 20rem;
+}
 
+.arrow {
+    height: 1rem;
+    margin-top: .5rem;
+}
 </style>
