@@ -56,8 +56,8 @@ export default class VMenuList extends Vue {
 <style scoped>
 .main {
     position: sticky;
-    margin: auto 0;
-    min-height: 15rem;
+    height: 100%;
+    max-height: 17rem;
     min-width: 10rem;
     border-radius: 0 1rem 1rem 0;
     background-color: var(--container-bg-color);

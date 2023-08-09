@@ -1,6 +1,8 @@
 <template>
     <div class="container_menu" v-if="show">
-        <VMenuList/>
+        <div class="menu_list">
+            <VMenuList/>
+        </div>
         <div class="modal">
             <VModal>
                 <router-view/>
@@ -49,18 +51,26 @@ export default class App extends Vue {
 .container {
     display: grid;
     grid-template-columns: 1fr;
-    height: 100vh;
+    height: 100%;
 }
 
 .container_menu {
     display: grid;
     grid-template-columns: min-content 1fr;
-    height: 100vh;
 }
 
 .modal {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.menu_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    position: sticky;
+    top: 0;
 }
 </style>
