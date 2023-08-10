@@ -187,12 +187,12 @@ export default class HomeView extends Vue {
 }
 
 .greetings_main_header {
-    scale: 110%;
+    scale: 100%;
     transition: .75s;
 }
 
 .greetings_main_header:hover {
-    scale: 120%;
+    scale: 110%;
 }
 
 .description {
