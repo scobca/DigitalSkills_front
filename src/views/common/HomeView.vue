@@ -17,12 +17,67 @@
             <Carousel/>
         </div>
     </div>
-<!--    TODO create new icon - arrow_down-->
     <div class="arrow_down_container">
-        <img src="../../assets/svg/arrow_icon_down.svg" alt="" class="arrow_down animate__animated animate__flash animate__delay-2s	">
+        <img src="@/assets/svg/arrow_icon_down.svg" alt="" class="arrow_down animate__animated animate__flash">
     </div>
-    <div class="benefits_container">
-        <h1 class="benefits_header animate__animated animate__backInUp animate__slow animate__delay-2s">Наши преимущества</h1>
+    <div class="benefits_container animate__animated animate__backInUp animate__slower">
+        <h1 class="benefits_header">Наши преимущества</h1>
+        <div class="benefits">
+            <div class="benefit_block">
+                <div class="row-reverse">
+                    <!--                    <img src="@/assets/svg/menu_icon.svg" alt="" class="img benefit_img">-->
+                    <h4 class="benefit_title">Индивидуальный подход</h4>
+                </div>
+                <p class="benefit_body">
+                    Мы понимаем, что каждая компания уникальна. Поэтому наши специалисты тщательно анализируют
+                    потребности клиента и разрабатывают индивидуальные стратегии биллинга, которые максимально
+                    соответствуют их бизнес-модели.
+                </p>
+            </div>
+            <div class="benefit_block">
+                <div class="row-reverse">
+                    <!--                    <img src="@/assets/svg/menu_icon.svg" alt="" class="img benefit_img">-->
+                    <h4 class="benefit_title">Технологические инновации</h4>
+                </div>
+                <p class="benefit_body">
+                    Ковалёво Inc. всегда на шаг впереди, следя за последними тенденциями в области биллинга и внедряя
+                    передовые технологии. Наша платформа предлагает современные инструменты для автоматизации биллинга,
+                    управления подписками, анализа данных и многое другое.
+                </p>
+            </div>
+            <div class="benefit_block">
+                <div class="row-reverse">
+                    <!--                    <img src="@/assets/svg/menu_icon.svg" alt="" class="img benefit_img">-->
+                    <h4 class="benefit_title">Безопасность</h4>
+                </div>
+                <p class="benefit_body">
+                    Мы придерживаемся высочайших стандартов безопасности, обеспечивая защиту конфиденциальных данных
+                    наших клиентов. Мы постоянно обновляем наши системы и используем передовые методы шифрования, чтобы
+                    гарантировать полную безопасность информации.
+                </p>
+            </div>
+            <div class="benefit_block">
+                <div class="row-reverse">
+                    <!--                    <img src="@/assets/svg/menu_icon.svg" alt="" class="img benefit_img">-->
+                    <h4 class="benefit_title">Прозрачность</h4>
+                </div>
+                <p class="benefit_body">
+                    В Ковалёво Inc. мы ценим открытость и честность. Наши клиенты всегда могут рассчитывать на
+                    прозрачные финансовые отчеты и детальные аналитические данные, чтобы принимать информированные
+                    решения.
+                </p>
+            </div>
+            <div class="benefit_block">
+                <div class="row-reverse">
+                    <!--                    <img src="@/assets/svg/menu_icon.svg" alt="" class="img benefit_img">-->
+                    <h4 class="benefit_title">Поддержка клиентов</h4>
+                </div>
+                <p class="benefit_body">
+                    Наша команда экспертов всегда готова оказать профессиональную поддержку клиентам. Мы ценим
+                    долгосрочные отношения и стремимся помогать нашим клиентам достигать успеха в их бизнесе.
+                </p>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -81,6 +136,31 @@ export default class HomeView extends Vue {
     margin: 2rem 0;
 }
 
+.benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 65rem;
+    margin: 2rem;
+}
+
+.benefit_block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    width: 20rem;
+    text-align: left;
+    margin: 1rem 0;
+}
+
+.benefit_title {
+    font-size: 1.5rem;
+    letter-spacing: .25rem;
+}
+
+.benefit_body {
+}
+
 .benefits_header {
     margin: 0 0 0 -13%;
     letter-spacing: .5rem;
@@ -126,7 +206,7 @@ export default class HomeView extends Vue {
     gap: 2rem;
 }
 
-.animate__flash{
+.animate__flash {
     --animate-duration: 2.5s;
 }
 </style>
