@@ -88,7 +88,6 @@ import {AuthModel} from "@/api/models/AuthModel";
     components: {VButton, VInput}
 })
 export default class AuthView extends Vue {
-    model = ''
     name = ''
     email = ''
     password = ''
