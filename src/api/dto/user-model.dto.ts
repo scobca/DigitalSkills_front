@@ -1,5 +1,5 @@
 export type UserModelDto = {
-    credits: string | null,
+    id: number | null,
+    full_name: string | null,
     email: string | null,
-    password: string | null,
 }

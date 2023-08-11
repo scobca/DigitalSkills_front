@@ -25,8 +25,9 @@
                         v-model="doublePassword"
                 />
                 <div class="buttons_container">
-                    <VButton class="button" @click="checkValid"> Зарегистрироваться </VButton>
-                    <p class="btn_text"> Уже есть аккаунт? <span @click="this.$route.push({name: 'login'})" class="action_text"> Войти </span></p>
+                    <VButton class="button" @click="checkValid('reg')"> Зарегистрироваться</VButton>
+                    <p class="btn_text"> Уже есть аккаунт? <span @click="this.$router.push({name: 'login'})"
+                                                                 class="action_text"> Войти </span></p>
                 </div>
             </div>
         </div>
@@ -47,8 +48,9 @@
                         v-model="password"
                 />
                 <div class="buttons_container">
-                    <VButton class="button" @click="login"> Войти </VButton>
-                    <p class="btn_text"> Ещё нет аккаунта? <span @click="this.$route.push({name: 'registration'})" class="action_text"> Регистрация </span></p>
+                    <VButton class="button" @click="loginUser"> Войти</VButton>
+                    <p class="btn_text"> Ещё нет аккаунта? <span @click="this.$router.push({name: 'registration'})"
+                                                                 class="action_text"> Регистрация </span></p>
                 </div>
             </div>
 
@@ -62,11 +64,11 @@
                     <h1 class="header"> Ваш профиль </h1>
                 </div>
                 <div class="credits_container">
-                    <p class="credit"> {{this.name}} </p>
-                    <p class="credit"> {{this.email}} </p>
+                    <p class="credit"> {{ userName }} </p>
+                    <p class="credit"> {{ userEmail }} </p>
                 </div>
                 <div class="buttons_container">
-                    <VButton class="button" @click="console.log('click')"> Выйти из аккаунта </VButton>
+                    <VButton class="button" @click="logout"> Выйти из аккаунта</VButton>
                 </div>
             </div>
 
@@ -80,7 +82,6 @@ import {Options, Vue} from "vue-class-component";
 import VInput from "@/components/UI/VInput.vue";
 import VButton from "@/components/UI/VButton.vue";
 import {AuthModel} from "@/api/models/AuthModel";
-import {tr} from "vuetify/locale";
 
 @Options({
     name: 'AuthView',
@@ -93,16 +94,35 @@ export default class AuthView extends Vue {
     password = ''
     doublePassword = ''
 
-    // checking valid of user data
-    checkValid() {
-        if (this.name == null)
-            return null
-        if (this.email == null || !this.email.includes('@'))
-            return null
-        if (this.password == null || this.doublePassword == null || this.password != this.doublePassword )
-            return null
+    get userName() {
+        return localStorage.getItem('name')
+    }
 
-        this.newUser()
+    get userEmail() {
+        return localStorage.getItem('email')
+    }
+
+    // checking valid of user data
+    checkValid(request: string) {
+        if (request == 'reg') {
+            if (this.name == null)
+                return null
+            if (this.email == null || !this.email.includes('@'))
+                return null
+            if (this.password == null || this.doublePassword == null || this.password != this.doublePassword)
+                return null
+
+            this.newUser()
+        }
+        if (request == 'login') {
+            if (this.email == null || !this.email.includes('@'))
+                return null
+            if (this.password == null)
+                return null
+
+            this.loginUser()
+        }
+        return null
     }
 
     newUser() {
@@ -113,7 +133,54 @@ export default class AuthView extends Vue {
         fd.append('email', this.email)
         fd.append('password', this.password)
 
-        auth.registerUser(fd);
+        auth.registerUser(fd)
+            .then((res: any) => {
+                console.log(res)
+
+                // TODO make user reg - profile after new functions in API
+
+                // if (res) {
+                //     const user = res.data.data[0]
+                //     const body = {
+                //         id: user.id,
+                //         email: user.email,
+                //         full_name: user.full_name
+                //     }
+                //
+                //     console.log(body)
+                //     this.$store.commit('addUser', body)
+                // }
+            })
+    }
+
+    async loginUser() {
+        const auth = new AuthModel();
+        const fd = new FormData();
+
+        fd.append('email', this.email)
+        fd.append('password', this.password)
+
+        await auth.loginUser(fd)
+            .then((res: any) => {
+                const user = res.data.data[0]
+                const body = {
+                    id: user.id,
+                    email: user.email,
+                    full_name: user.full_name
+                }
+
+                console.log(body)
+                this.$store.commit('addUser', body)
+            })
+
+        this.$router.push({name: 'profile'})
+    }
+
+    logout() {
+        localStorage.removeItem('name')
+        localStorage.removeItem('email')
+
+        this.$router.push('/')
     }
 }
 </script>

@@ -1,9 +1,6 @@
 import axios from "axios";
-
 import ApiResolver from "@/api/ApiResolver";
 import apiConf from "@/api/api.conf";
-import {store} from "@/store/store";
-
 
 
 export class AuthModel {
