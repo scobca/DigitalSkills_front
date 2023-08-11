@@ -4,7 +4,7 @@
             <div class="active_container">
                 <div class="row">
                     <router-link to="/">
-                        <img src="../../assets/svg/arrow_icon_left.svg" alt="" class="img">
+                        <img src="@/assets/svg/arrow_icon_left.svg" alt="" class="img">
                     </router-link>
                     <h1 class="header"> Регистрация </h1>
                 </div>
@@ -21,10 +21,6 @@
                             class="input"
                             v-model="phone"
                     />
-                    <VInput :placeholder="'ID Администратора'"
-                            class="input"
-                            v-model="adminId"
-                    />
                     <VInput :placeholder="'Пароль'"
                             class="input"
                             v-model="password"
@@ -35,8 +31,8 @@
                     />
                 </div>
                 <div class="buttons_container">
-                    <VButton class="button" @click="newUser"> Зарегистрироваться </VButton>
-                    <p class="btn_text"> Уже есть аккаунт? <span @click="toLogin" class="action_text"> Войти </span></p>
+                    <VButton class="button" @click="checkValid('reg')"> Зарегистрироваться </VButton>
+                    <p class="btn_text"> Уже есть аккаунт? <span @click="this.$router.push({name: 'signIn'})" class="action_text"> Войти </span></p>
                 </div>
             </div>
         </div>
@@ -57,8 +53,8 @@
                         v-model="password"
                 />
                 <div class="buttons_container">
-                    <VButton class="button" @click="login"> Войти </VButton>
-                    <p class="btn_text"> Ещё нет аккаунта? <span @click="toReg" class="action_text"> Регистрация </span></p>
+                    <VButton class="button" @click="loginAdmin"> Войти </VButton>
+                    <p class="btn_text"> Ещё нет аккаунта? <span @click="this.$router.push({name: 'signUp'})" class="action_text"> Регистрация </span></p>
                 </div>
             </div>
 
@@ -76,7 +72,7 @@
                     <p class="credit"> {{this.email}} </p>
                 </div>
                 <div class="buttons_container">
-                    <VButton class="button" @click="clicked"> Выйти из аккаунта </VButton>
+                    <VButton class="button" @click="logout"> Выйти из аккаунта </VButton>
                 </div>
             </div>
 
@@ -89,47 +85,103 @@
 import {Options, Vue} from "vue-class-component";
 import VInput from "@/components/UI/VInput.vue";
 import VButton from "@/components/UI/VButton.vue";
+import {AuthModel} from "@/api/models/AuthModel";
 
 @Options({
     name: 'AdminAuthView',
     components: {VButton, VInput}
 })
 export default class AdminAuthView extends Vue {
-    name: string | null = null
-    email: string | null = null
-    phone: number | null = null
-    adminId: number | null = null
-    password: string | null = null
-    doublePassword: string | null = null
+    name = ''
+    email = ''
+    phone = ''
+    password = ''
+    doublePassword = ''
 
-    clicked() {
-        console.log('clicked')
-    }
-    toLogin() {
-        this.$router.push({name: 'signIn'})
-    }
-    toReg() {
-        this.$router.push({name: 'signUp'})
-    }
-    login() {
-        this.name = localStorage.getItem('name')
-        this.email = localStorage.getItem('email')
-        this.$router.push({name: 'account'})
-    }
-    async newUser() {
-        const credits = {
-            name: this.name,
-            email: this.email,
-            password: this.password,
+    checkValid(request: string) {
+        //pick one of the methods of validation: when registration | when login
+        if (request == 'reg') {
+            if (this.name == null)
+                return null
+            if (this.email == null || !this.email.includes('@'))
+                return null
+            if (this.phone == null)
+                return null
+            if (this.password == null || this.doublePassword == null || this.password != this.doublePassword)
+                return null
+
+            this.newAdmin()
         }
+        if (request == 'login') {
+            if (this.email == null || !this.email.includes('@'))
+                return null
+            if (this.password == null)
+                return null
 
-        this.$store.commit('addUser', credits)
-        await this.getUserData()
+            this.loginAdmin()
+        }
+        return null
+    }
+
+    newAdmin() {
+        const auth = new AuthModel();
+        const fd = new FormData();
+
+        fd.append('full_name', this.name)
+        fd.append('email', this.email)
+        fd.append('password', this.password)
+        fd.append('phone', this.phone)
+
+        auth.registerAdmin(fd)
+            .then((res: any) => {
+                console.log(res)
+
+                // TODO make user reg - profile after new functions in API
+                // TODO change store commit for admin
+
+                // if (res) {
+                //     const admin = res.data.data[0]
+                //     const body = {
+                //         id: admin.id,
+                //         email: admin.email,
+                //         full_name: admin.full_name
+                //     }
+                //
+                //     console.log(body)
+                //     this.$store.commit('addUser', body)
+                // }
+            })
+    }
+
+    async loginAdmin() {
+        const auth = new AuthModel();
+        const fd = new FormData();
+
+        fd.append('email', this.email)
+        fd.append('password', this.password)
+
+        await auth.loginAdmin(fd)
+            .then((res: any) => {
+                const admin = res.data.data[0]
+                const body = {
+                    id: admin.id,
+                    email: admin.email,
+                    full_name: admin.full_name
+                }
+
+                console.log(body)
+                this.$store.commit('addUser', body)
+            })
+
         this.$router.push({name: 'profile'})
     }
-    async getUserData() {
-        this.name = localStorage.getItem('name')
-        this.email = localStorage.getItem('email')
+
+    logout() {
+        localStorage.removeItem('admin_name')
+        localStorage.removeItem('admin_email')
+        localStorage.removeItem('admin_phone')
+
+        this.$router.push('/')
     }
 }
 </script>
