@@ -23,7 +23,6 @@ import {Options, Vue} from "vue-class-component";
 import VModal from "@/components/UI/VModal.vue";
 import VMenuList from "@/components/UI/VMenuList.vue";
 import VButton from "@/components/UI/VButton.vue";
-import {LoginModel} from "@/api/models/LoginModel";
 
 @Options({
     name: 'App',
@@ -32,17 +31,6 @@ import {LoginModel} from "@/api/models/LoginModel";
 export default class App extends Vue {
     get show() {
         return this.$store.getters.showMenu
-    }
-
-    created() {
-        const loginModel = new LoginModel()
-
-        const body = {
-            email: '123123@mail.ru',
-            password: '123123123'
-        }
-
-        console.log(loginModel.signIn(body))
     }
 }
 </script>

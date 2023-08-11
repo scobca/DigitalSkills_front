@@ -25,8 +25,8 @@
                         v-model="doublePassword"
                 />
                 <div class="buttons_container">
-                    <VButton class="button" @click="newUser"> Зарегистрироваться </VButton>
-                    <p class="btn_text"> Уже есть аккаунт? <span @click="toLogin" class="action_text"> Войти </span></p>
+                    <VButton class="button" @click="checkValid"> Зарегистрироваться </VButton>
+                    <p class="btn_text"> Уже есть аккаунт? <span @click="this.$route.push({name: 'login'})" class="action_text"> Войти </span></p>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
                 />
                 <div class="buttons_container">
                     <VButton class="button" @click="login"> Войти </VButton>
-                    <p class="btn_text"> Ещё нет аккаунта? <span @click="toReg" class="action_text"> Регистрация </span></p>
+                    <p class="btn_text"> Ещё нет аккаунта? <span @click="this.$route.push({name: 'registration'})" class="action_text"> Регистрация </span></p>
                 </div>
             </div>
 
@@ -66,7 +66,7 @@
                     <p class="credit"> {{this.email}} </p>
                 </div>
                 <div class="buttons_container">
-                    <VButton class="button" @click="clicked"> Выйти из аккаунта </VButton>
+                    <VButton class="button" @click="console.log('click')"> Выйти из аккаунта </VButton>
                 </div>
             </div>
 
@@ -79,46 +79,41 @@
 import {Options, Vue} from "vue-class-component";
 import VInput from "@/components/UI/VInput.vue";
 import VButton from "@/components/UI/VButton.vue";
+import {AuthModel} from "@/api/models/AuthModel";
+import {tr} from "vuetify/locale";
 
 @Options({
     name: 'AuthView',
     components: {VButton, VInput}
 })
 export default class AuthView extends Vue {
-    model: string | null = null
-    name: string | null = null
-    email: string | null = null
-    password: string | null = null
-    doublePassword: string | null = null
+    model = ''
+    name = ''
+    email = ''
+    password = ''
+    doublePassword = ''
 
-    clicked() {
-        console.log('clicked')
-    }
-    toLogin() {
-        this.$router.push({name: 'login'})
-    }
-    toReg() {
-        this.$router.push({name: 'registration'})
-    }
-    login() {
-        this.name = localStorage.getItem('name')
-        this.email = localStorage.getItem('email')
-        this.$router.push({name: 'profile'})
-    }
-    async newUser() {
-        const credits = {
-            name: this.name,
-            email: this.email,
-            password: this.password,
-        }
+    // checking valid of user data
+    checkValid() {
+        if (this.name == null)
+            return null
+        if (this.email == null || !this.email.includes('@'))
+            return null
+        if (this.password == null || this.doublePassword == null || this.password != this.doublePassword )
+            return null
 
-        this.$store.commit('addUser', credits)
-        await this.getUserData()
-        this.$router.push({name: 'profile'})
+        this.newUser()
     }
-    async getUserData() {
-        this.name = localStorage.getItem('name')
-        this.email = localStorage.getItem('email')
+
+    newUser() {
+        const auth = new AuthModel();
+        const fd = new FormData();
+
+        fd.append('full_name', this.name)
+        fd.append('email', this.email)
+        fd.append('password', this.password)
+
+        auth.registerUser(fd);
     }
 }
 </script>
