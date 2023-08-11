@@ -17,8 +17,7 @@ export class AuthModel {
                     }
                 }
             ).then(async (res) => {
-                console.log(res)
-                resolve(true);
+                resolve(res);
             }).catch(err => {
                 reject(err);
             });
@@ -35,8 +34,7 @@ export class AuthModel {
                     }
                 }
             ).then(async (res) => {
-                console.log(res)
-                resolve(true);
+                resolve(res);
             }).catch(err => {
                 reject(err);
             });
@@ -53,8 +51,7 @@ export class AuthModel {
                     }
                 }
             ).then(async (res) => {
-                console.log(res)
-                resolve(true);
+                resolve(res);
             }).catch(err => {
                 reject(err);
             });
@@ -71,8 +68,7 @@ export class AuthModel {
                     }
                 }
             ).then(async (res) => {
-                console.log(res)
-                resolve(true);
+                resolve(res);
             }).catch(err => {
                 reject(err);
             });
@@ -87,9 +83,6 @@ export class HeadAuth extends ApiResolver {
 
     registerUser(data: FormData) {
         return this.request('register', 'POST', data)
-            .then(async (res: any) => {
-                console.log(res)
-            })
     }
 
     loginUser(data: FormData) {
