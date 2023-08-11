@@ -104,6 +104,7 @@ export default class AuthView extends Vue {
 
     // checking valid of user data
     checkValid(request: string) {
+        //pick one of the methods of validation: when registration | when login
         if (request == 'reg') {
             if (this.name == null)
                 return null
